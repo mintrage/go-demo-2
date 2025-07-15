@@ -5,31 +5,33 @@ import "fmt"
 // В цикле спрашиваем ввод транзакций: -10, 10, 40.5
 // Добавлять каждую в массив транзакций
 // Вывести массив
+// !Вывести сумму баланса в консоль
 
 func main() {
-	tr1 := []int{1, 2, 3}
-	tr2 := []int{4, 5, 6}
-	tr1 = append(tr1, tr2...)
-	fmt.Println(tr1)
-
-	for index := range tr1 {
-		fmt.Println(index)
-	}
-	// transactions := []int{0, 20, 35}
-	// temp := transactions
-	// transactions = append(transactions, 100)
-	// fmt.Println(temp)
-	// fmt.Println(transactions)
-	var transactions []float64
-	var input float64
+	transactions := []float64{}
 	for {
-		fmt.Println("Введите транзакцию:")
-		fmt.Scan(&input)
-		if input == 0 {
+		transaction := scanTransactions()
+		if transaction == 0 {
 			break
 		}
-		transactions = append(transactions, input)
-
+		transactions = append(transactions, transaction)
 	}
-	fmt.Println(transactions)
+	balance := calculateBalance(transactions)
+	fmt.Printf("Ваш баланс: %.2f", balance)
+
+}
+
+func scanTransactions() float64 {
+	var transaction float64
+	fmt.Print("Введите транзакцию (n для выхода): ")
+	fmt.Scan(&transaction)
+	return transaction
+}
+
+func calculateBalance(transactions []float64) float64 {
+	balance := 0.0
+	for _, value := range transactions {
+		balance += value
+	}
+	return balance
 }
