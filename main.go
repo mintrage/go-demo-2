@@ -7,6 +7,10 @@ import "fmt"
 // Вывести массив
 
 func main() {
+	tr1 := []int{1, 2, 3}
+	tr2 := []int{4, 5, 6}
+	tr1 = append(tr1, tr2...)
+	fmt.Print(tr1)
 	// transactions := []int{0, 20, 35}
 	// temp := transactions
 	// transactions = append(transactions, 100)
