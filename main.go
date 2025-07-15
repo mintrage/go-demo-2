@@ -10,7 +10,11 @@ func main() {
 	tr1 := []int{1, 2, 3}
 	tr2 := []int{4, 5, 6}
 	tr1 = append(tr1, tr2...)
-	fmt.Print(tr1)
+	fmt.Println(tr1)
+
+	for index := range tr1 {
+		fmt.Println(index)
+	}
 	// transactions := []int{0, 20, 35}
 	// temp := transactions
 	// transactions = append(transactions, 100)
